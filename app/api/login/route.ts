@@ -1,16 +1,10 @@
 export async function POST(request: Request) {
   const { email, password } = await request.json();
-  const adminEmail = process.env.ADMIN_EMAIL;
-  const adminPassword = process.env.ADMIN_PASSWORD;
 
-  if (!adminEmail || !adminPassword) {
-    return Response.json(
-      { error: "Credenciais administrativas nao configuradas." },
-      { status: 500 },
-    );
-  }
-
-  if (email === adminEmail && password === adminPassword) {
+  if (
+    email === "admin@saideiraja.com.br" &&
+    password === "Saideira@2026"
+  ) {
     return Response.json({ ok: true });
   }
 
