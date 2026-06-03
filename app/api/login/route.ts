@@ -9,7 +9,7 @@ export async function POST(request: Request) {
   }
 
   return Response.json(
-    { error: "E-mail ou senha invalidos." },
+    { error: "E-mail ou senha inv\u00e1lidos." },
     { status: 401 },
   );
 }

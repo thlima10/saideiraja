@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useSyncExternalStore } from "react";
 
 const AUTH_KEY = "saideira_admin_auth";
@@ -11,6 +11,8 @@ type ProtectedRouteProps = {
 
 export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   const router = useRouter();
+  const pathname = usePathname();
+  const showLogoutButton = pathname !== "/admin";
   const isAuthorized = useSyncExternalStore(
     subscribeToAuthChanges,
     getAuthSnapshot,
@@ -33,7 +35,7 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     return (
       <main className="grid min-h-screen place-items-center bg-gray-100 px-6 text-gray-900">
         <div className="rounded-lg bg-white p-6 text-center shadow">
-          <p className="font-bold text-orange-600">Saideira Ja</p>
+          <p className="font-bold text-orange-600">Saideira J{"\u00e1"}</p>
           <p className="mt-2 text-gray-500">Verificando acesso...</p>
         </div>
       </main>
@@ -42,13 +44,15 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={sair}
-        className="fixed right-4 top-4 z-50 rounded-lg border border-orange-200 bg-white px-4 py-2 text-sm font-bold text-orange-600 shadow transition hover:bg-orange-50"
-      >
-        Sair
-      </button>
+      {showLogoutButton && (
+        <button
+          type="button"
+          onClick={sair}
+          className="fixed right-4 top-4 z-50 rounded-lg border border-orange-200 bg-white px-4 py-2 text-sm font-bold text-orange-600 shadow transition hover:bg-orange-50"
+        >
+          Sair
+        </button>
+      )}
       {children}
     </>
   );

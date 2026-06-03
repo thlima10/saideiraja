@@ -35,7 +35,7 @@ export default function LoginPage() {
 
       if (!response.ok) {
         const data = await response.json().catch(() => null);
-        setError(data?.error || "Nao foi possivel entrar.");
+        setError(data?.error || "N\u00e3o foi poss\u00edvel entrar.");
         return;
       }
 
@@ -51,12 +51,12 @@ export default function LoginPage() {
       <section className="grid min-h-screen place-items-center px-6 py-10">
         <div className="w-full max-w-md rounded-lg bg-white p-6 shadow">
           <Link href="/" className="text-sm font-bold text-orange-600">
-            Saideira Ja
+            Saideira J{"\u00e1"}
           </Link>
 
           <h1 className="mt-4 text-3xl font-bold">Acesso privado</h1>
           <p className="mt-2 text-gray-500">
-            Entre para acessar as areas administrativas do MVP.
+            Entre para acessar as {"\u00e1"}reas administrativas do MVP.
           </p>
 
           <form onSubmit={entrar} className="mt-6 grid gap-4">

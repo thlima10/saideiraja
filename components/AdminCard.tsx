@@ -14,7 +14,7 @@ export default function AdminCard({
   href,
 }: AdminCardProps) {
   const content = (
-    <div className="rounded-xl bg-white p-6 shadow transition hover:shadow-lg">
+    <div className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
       <p className="text-sm font-bold uppercase tracking-wide text-orange-600">
         {title}
       </p>
